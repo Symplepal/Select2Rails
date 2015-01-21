@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @tag.name %>
+</p>
+
+<p>
+  <strong>Movies:</strong>
+  <% @tag.movies.each do |movie| %>
+      <%= link_to movie.title, movie %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>

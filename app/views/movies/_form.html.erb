@@ -1,0 +1,27 @@
+<script>
+    $(document).ready(function() {
+        $("#movie_tag_ids").select2({
+
+        });
+    });
+</script>
+
+<%= simple_form_for @movie, :role => 'form' do |f| %>
+    <% if @movie.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @movie.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.input :title, label: false, :class => 'form-control', :placeholder => 'Movie name' %>
+      <%= f.association :tags, label: false, :placeholder => 'Tags'%>
+    </div>
+    <%= f.submit 'Save movie', :class => "btn btn-default"%>
+
+<% end %>
